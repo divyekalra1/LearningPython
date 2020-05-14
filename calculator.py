@@ -1,9 +1,12 @@
 from tkinter import *
 from tkinter import font
 base = Tk()
-e = Entry(base, width = 50, borderwidth = 5)
+
+base.configure(bg = "#008080")
+
+e = Entry(base, width = 50, borderwidth = 10, font = "calibri 10")
 base.title("Simple Calculator")
-e.grid(row = 0, column = 0, columnspan = 3, padx = 10, pady = 10)
+e.grid(row = 0, column = 0, columnspan = 3, padx = 10, pady = 30)
 
 def button_click(number):
     current = e.get()
@@ -19,6 +22,7 @@ m = 0
 
 def button_add():
     x = e.get()
+    global m
     m = int(x)
     e.delete(0,END)
     global t
@@ -27,6 +31,7 @@ def button_add():
 
 def button_sub():
     x = e.get()
+    global m
     m = int(x)
     e.delete(0,END)
     global t
@@ -35,6 +40,7 @@ def button_sub():
 
 def button_mul():
     x = e.get()
+    global m
     m = int(x)
     e.delete(0,END)
     global t
@@ -42,41 +48,43 @@ def button_mul():
 
 def button_div():
     x = e.get()
+    global m
     m = int(x)
-    e.delete(0, END)
+    e.delete(0,END)
     global t
     t = 4
 
 def button_equals():
     s = e.get()
+    y = int(s)
     e.delete(0, END)
     if t == 1:
-        e.insert(0, int(s) + m)
+        e.insert(0, y + m)
     elif t == 2:
-        e.insert(0, m - int(s))
+        e.insert(0, m - y)
     elif t == 3:
-        e.insert(0, m * int(s))
+        e.insert(0, m * y)
     elif t == 4:
-        e.insert(0, m / int(s))
+        e.insert(0, m / y)
 #A different font
 helv36 = font.Font(family='Arial', size=20)
 
-b0 = Button(base, padx = 55, pady = 25, text = "0", font = helv36, command = lambda: button_click(0))
-b1 = Button(base, padx = 55, pady = 25, text = "1", font = helv36, command = lambda: button_click(1))
-b2 = Button(base, padx = 55, pady = 25, text = "2", font = helv36, command = lambda: button_click(2))
-b3 = Button(base, padx = 55, pady = 25, text = "3", font = helv36, command = lambda: button_click(3))
-b4 = Button(base, padx = 55, pady = 25, text = "4", font = helv36, command = lambda: button_click(4))
-b5 = Button(base, padx = 55, pady = 25, text = "5", font = helv36, command = lambda: button_click(5))
-b6 = Button(base, padx = 55, pady = 25, text = "6", font = helv36, command = lambda: button_click(6))
-b7 = Button(base, padx = 55, pady = 25, text = "7", font = helv36, command = lambda: button_click(7))
-b8 = Button(base, padx = 55, pady = 25, text = "8", font = helv36, command = lambda: button_click(8))
-b9 = Button(base, padx = 55, pady = 25, text = "9", font = helv36, command = lambda: button_click(9))
-plus = Button(base, padx = 55, pady = 25, text = "+", font = helv36, command = button_add)
-minus = Button(base, padx = 55, pady = 25, text = "-", font = helv36, command = button_sub)
-equals = Button(base, padx = 55, pady = 25, text = "=", font = helv36, command = button_equals)
-clear = Button(base, padx = 109.5, pady = 25, text = "Clear", font = helv36, command = button_clear)
-mul = Button(base, padx = 55, pady = 25, text = "*", font = helv36, command = button_mul)
-div = Button(base, padx = 55, pady = 25, text = "/", font = helv36, command = button_div)
+b0 = Button(base, padx = 50, pady = 25, text = "0", font = helv36, command = lambda: button_click(0), bg = "light blue")
+b1 = Button(base, padx = 50, pady = 25, text = "1", font = helv36, command = lambda: button_click(1), bg = "light blue")
+b2 = Button(base, padx = 50, pady = 25, text = "2", font = helv36, command = lambda: button_click(2), bg = "light blue")
+b3 = Button(base, padx = 50, pady = 25, text = "3", font = helv36, command = lambda: button_click(3), bg = "light blue")
+b4 = Button(base, padx = 50, pady = 25, text = "4", font = helv36, command = lambda: button_click(4), bg = "light blue")
+b5 = Button(base, padx = 50, pady = 25, text = "5", font = helv36, command = lambda: button_click(5), bg = "light blue")
+b6 = Button(base, padx = 50, pady = 25, text = "6", font = helv36, command = lambda: button_click(6), bg = "light blue")
+b7 = Button(base, padx = 50, pady = 25, text = "7", font = helv36, command = lambda: button_click(7), bg = "light blue")
+b8 = Button(base, padx = 50, pady = 25, text = "8", font = helv36, command = lambda: button_click(8), bg = "light blue")
+b9 = Button(base, padx = 50, pady = 25, text = "9", font = helv36, command = lambda: button_click(9), bg = "light blue")
+plus = Button(base, padx = 50, pady = 25, text = "+", font = helv36, command = button_add, bg = "black", fg = "white")
+minus = Button(base, padx = 54, pady = 25, text = "-", font = helv36, command = button_sub, bg = "black", fg = "white")
+equals = Button(base, padx = 50, pady = 25, text = "=", font = helv36, command = button_equals, bg = "black", fg = "white")
+clear = Button(base, padx = 109.5, pady = 25, text = "Clear", font = helv36, command = button_clear, bg = "black", fg = "white")
+mul = Button(base, padx = 53, pady = 25, text = "*", font = helv36, command = button_mul, bg = "black", fg = "white")
+div = Button(base, padx = 54, pady = 25, text = "/", font = helv36, command = button_div, bg = "black", fg = "white")
 
 
 b0.grid(row = 4, column = 1)
@@ -93,6 +101,6 @@ plus.grid(row = 4 , column = 0)
 minus.grid(row = 4 , column = 2)
 div.grid(row = 5, column = 1)
 mul.grid(row = 5, column = 0)
-clear.grid(row = 6 , columnspan = 2, column = 0)
-equals.grid(row = 6 , column = 2)
+clear.grid(row = 6 , columnspan = 3, column = 0)
+equals.grid(row = 5 , column = 2)
 base.mainloop()
