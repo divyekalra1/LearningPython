@@ -4,9 +4,10 @@ base = Tk()
 
 base.configure(bg = "#008080")
 
-e = Entry(base, width = 50, borderwidth = 10, font = "calibri 10")
+e = Entry(base, width = 50, borderwidth = 10, font = "calibri 15")
+
 base.title("Simple Calculator")
-e.grid(row = 0, column = 0, columnspan = 3, padx = 10, pady = 30)
+e.grid(row = 0, column = 0, columnspan = 25, padx = 10, pady = 30)
 
 def button_click(number):
     current = e.get()
@@ -23,7 +24,7 @@ m = 0
 def button_add():
     x = e.get()
     global m
-    m = int(x)
+    m = float(x)
     e.delete(0,END)
     global t
     t = 1
@@ -32,7 +33,7 @@ def button_add():
 def button_sub():
     x = e.get()
     global m
-    m = int(x)
+    m = float(x)
     e.delete(0,END)
     global t
     t = 2
@@ -41,7 +42,7 @@ def button_sub():
 def button_mul():
     x = e.get()
     global m
-    m = int(x)
+    m = float(x)
     e.delete(0,END)
     global t
     t = 3
@@ -49,14 +50,14 @@ def button_mul():
 def button_div():
     x = e.get()
     global m
-    m = int(x)
+    m = float(x)
     e.delete(0,END)
     global t
     t = 4
 
 def button_equals():
     s = e.get()
-    y = int(s)
+    y = float(s)
     e.delete(0, END)
     if t == 1:
         e.insert(0, y + m)
@@ -66,6 +67,14 @@ def button_equals():
         e.insert(0, m * y)
     elif t == 4:
         e.insert(0, m / y)
+
+def button_goback():
+    f = e.get()
+    length = len(f)
+    e.delete(0, END)
+    e.insert(0, f[0:length-1])
+
+
 #A different font
 helv36 = font.Font(family='Arial', size=20)
 
@@ -82,9 +91,11 @@ b9 = Button(base, padx = 50, pady = 25, text = "9", font = helv36, command = lam
 plus = Button(base, padx = 50, pady = 25, text = "+", font = helv36, command = button_add, bg = "black", fg = "white")
 minus = Button(base, padx = 54, pady = 25, text = "-", font = helv36, command = button_sub, bg = "black", fg = "white")
 equals = Button(base, padx = 50, pady = 25, text = "=", font = helv36, command = button_equals, bg = "black", fg = "white")
-clear = Button(base, padx = 109.5, pady = 25, text = "Clear", font = helv36, command = button_clear, bg = "black", fg = "white")
+clear = Button(base, padx = 155, pady = 25, text = "Clear", font = helv36, command = button_clear, bg = "black", fg = "white")
 mul = Button(base, padx = 53, pady = 25, text = "*", font = helv36, command = button_mul, bg = "black", fg = "white")
 div = Button(base, padx = 54, pady = 25, text = "/", font = helv36, command = button_div, bg = "black", fg = "white")
+decimal = Button(base, padx = 54, pady = 25, text = ".", font = helv36, command = button_div, bg = "black", fg = "white")
+go_back = Button(base, padx = 35, pady = 25, text = "<---", font = helv36, command = button_goback, bg = "black", fg = "white")
 
 
 b0.grid(row = 4, column = 1)
@@ -97,10 +108,13 @@ b6.grid(row = 2 , column = 2)
 b7.grid(row = 3 , column = 0)
 b8.grid(row = 3 , column = 1)
 b9.grid(row = 3 , column = 2)
-plus.grid(row = 4 , column = 0)
-minus.grid(row = 4 , column = 2)
-div.grid(row = 5, column = 1)
-mul.grid(row = 5, column = 0)
-clear.grid(row = 6 , columnspan = 3, column = 0)
-equals.grid(row = 5 , column = 2)
+plus.grid(row = 1 , column = 3)
+minus.grid(row = 2 , column = 3)
+div.grid(row = 4, column = 3)
+mul.grid(row = 3, column = 3)
+clear.grid(row = 5 , columnspan = 3, column = 0)
+equals.grid(row = 5 , column = 3)
+decimal.grid(row = 4 , column = 2)
+go_back.grid(row = 4 , column = 0)
+
 base.mainloop()
