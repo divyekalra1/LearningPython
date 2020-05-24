@@ -14,4 +14,5 @@ exception handling
 File Handling
 Scope Resolution of variables
 access specification of attributes and methods in oops
-
+*args, **kwargs
+dictionaries and lists
