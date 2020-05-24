@@ -16,3 +16,4 @@ Scope Resolution of variables
 access specification of attributes and methods in oops
 *args, **kwargs
 dictionaries and lists
+getters, setters and decorators
